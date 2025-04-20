@@ -9,7 +9,7 @@ const buttonku = [
   { nama: 'WhatsApp', link: 'https://wa.me/62895603792033?text=Hallo,%20boleh%20kita%20berteman%20broooo%20ku' }
 ]
 
-const techStack = ['Vue.js', 'Laravel', 'Express.js', 'TailwindCSS', 'Ubuntu']
+const techStack = ['Vue.js', 'Laravel', 'Express.js', 'Flask', 'TailwindCSS', 'Ubuntu']
 
 // Animasi teks berjalan
 const titles = ['Informatics Engineering Student', 'Tech Enthusiast', 'FrontEnd Web Developer', 'BackEnd Web Developer']
