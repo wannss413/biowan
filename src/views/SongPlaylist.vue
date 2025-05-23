@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 
 const router = useRouter()
@@ -80,14 +80,27 @@ function updateTime() {
   }
 }
 
+function handleEnded() {
+  if (currentSong.value) {
+    const currentIndex = songs.findIndex(s => s.id === currentSong.value.id)
+    const nextIndex = (currentIndex + 1) % songs.length
+    playSong(songs[nextIndex])
+  }
+}
+
 function goBack() {
   router.push('/')
 }
+
+onMounted(() => {
+  if (audio.value) {
+    audio.value.addEventListener('ended', handleEnded)
+  }
+})
 </script>
 
 <template>
   <div class="playlist-container relative min-h-screen bg-black overflow-hidden text-white">
-    <!-- Tombol Back -->
     <button
       @click="goBack"
       class="fixed top-4 left-4 z-20 bg-white text-black px-4 py-2 rounded-md shadow-md hover:bg-gray-200 transition-colors duration-300 ease-in-out select-none"
@@ -95,7 +108,6 @@ function goBack() {
       ← Back to Home
     </button>
 
-    <!-- Meteor Container -->
     <div class="meteors">
       <div class="meteor" style="--delay: 0s; --left: 10%; --duration: 2.5s;"></div>
       <div class="meteor" style="--delay: 1s; --left: 30%; --duration: 3s;"></div>
@@ -119,7 +131,6 @@ function goBack() {
             <h3 class="text-lg font-semibold">{{ song.title }}</h3>
             <p class="text-sm text-gray-700">{{ song.artist }}</p>
 
-            <!-- Progress Bar -->
             <div v-if="currentSong?.id === song.id" class="mt-2 w-full bg-gray-300 rounded h-2 overflow-hidden">
               <div
                 class="h-2 bg-blue-500 transition-all duration-200"
@@ -128,7 +139,6 @@ function goBack() {
             </div>
           </div>
 
-          <!-- Click to Play Text Only (Blink every 5s) -->
           <div
             v-if="currentSong?.id !== song.id"
             class="absolute inset-0 flex items-center justify-center"
@@ -140,7 +150,6 @@ function goBack() {
         </div>
       </div>
 
-      <!-- Hidden Audio Player -->
       <audio ref="audio" @timeupdate="updateTime" class="hidden" />
     </main>
   </div>
@@ -187,7 +196,6 @@ function goBack() {
   }
 }
 
-/* Blink every 5s */
 @keyframes blink {
   0%, 95%, 100% { opacity: 1; }
   96%, 98% { opacity: 0; }
