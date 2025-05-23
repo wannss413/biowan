@@ -105,7 +105,7 @@ function goBack() {
     </div>
 
     <main class="p-6 max-w-5xl mx-auto relative z-10">
-      <h2 class="text-3xl font-bold mb-6">My Song Playlist</h2>
+      <h2 class="text-3xl font-bold mb-6">My Music Playlist</h2>
 
       <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
         <div

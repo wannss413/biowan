@@ -9,7 +9,7 @@ const buttonku = [
   { nama: 'WhatsApp', link: 'https://wa.me/6282271287753?text=Oiiii,%20boleh%20kita%20berteman%20broooo%20ku' },
   { nama: 'Instagram', link: 'https://www.instagram.com/marwansardo?igsh=cWtnbzFiY2p6Nmxy_' },
   { nama: 'Git Hub', link: 'https://github.com/wannss413' },
-  { nama: 'My Song Playlist', link: '/playlist', isRoute: true }
+  { nama: 'My Music Playlist', link: '/playlist', isRoute: true }
 ]
 
 const techStack = ['Vue.js', 'Laravel', 'TailwindCSS']
